@@ -2,7 +2,6 @@
 /cache/
 /.ipynb_checkpoints/
 /data/original_data/OSM_Network/
-/documents/
 .DS_Store
 .ipynb_checkpoints
 .idea
