@@ -15,7 +15,7 @@ supply = supply.set_index('HC_ID')
 supply['FIPS'] = supply['FIPS'].astype(str)
 
 # Look up table of the distance between supply (Hospitals) and demand (Census Block Groups)
-within_dist = pd.read_csv('./data/preprocessing/input_files/mobility_lookup.csv')
+within_dist = pd.read_csv('./data/access/input_files/mobility_lookup.csv')
 within_dist = within_dist.drop(columns=['Unnamed: 0'])
 within_dist['GEOID'] = within_dist['GEOID'].astype(str)
 within_dist['trvl_time'] = -999

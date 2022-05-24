@@ -6,9 +6,6 @@ import multiprocessing as mp
 import itertools
 
 
-# Environment Variable
-FOCUS_SUPPLY = 'ICU_Beds'
-
 # Import input files
 # Supply locations
 s_loc = gpd.read_file('./data/supply_related/hospital_geocode.json')
@@ -20,7 +17,7 @@ d_loc = gpd.read_file('./data/demand_related/census_tract_projected.json')
 d_loc = d_loc.set_index('GEOID')
 
 # Mobility: OD Matrix between supply and demand locations
-mobility_df = pd.read_csv('./data/Precalculated_OD_Matrix.csv')
+mobility_df = pd.read_csv('./data/access/input_files/Precalculated_OD_Matrix.csv')
 
 # Supply daily variation
 s_val = pd.read_csv('./data/supply_related/ICU_beds_available_ratio.csv')
@@ -33,11 +30,11 @@ d_val = d_val.set_index('GEOID')
 d_val = d_val.drop(columns=['FIPS', 'CTID', 'Pop_Ratio', 'County_Pop'])
 
 # Focus dates of analysis
-from_date = '2020-06-01'
-to_date = '2021-12-31'
+from_date = '07/01/2020'
+to_date = '12/31/2021'
 
-start_date = datetime.datetime.strptime(from_date,  "%Y-%m-%d")
-end_date = datetime.datetime.strptime(to_date,  "%Y-%m-%d")
+start_date = datetime.datetime.strptime(from_date,  "%m/%d/%Y")
+end_date = datetime.datetime.strptime(to_date,  "%m/%d/%Y")
 
 focus_date = []
 delta = datetime.timedelta(days=1)
@@ -53,7 +50,7 @@ if __name__ == "__main__":
                  itertools.repeat(s_val),
                  itertools.repeat(d_val),
                  itertools.repeat(mobility_df),
-                 focus_date,
-                 itertools.repeat(FOCUS_SUPPLY))
+                 focus_date
+                )
              )
     pool.close()

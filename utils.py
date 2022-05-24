@@ -129,12 +129,12 @@ def local_OD_Matrix_unpacker(args):
     return local_OD_Matrix(*args)
 
 
-def E2SFCA_Step1(supply_loc, supply_var, demand_var, mobility, date_, FOCUS_SUPPLY):
+def E2SFCA_Step1(supply_loc, supply_var, demand_var, mobility, date_):
     # date_ = '06/01/2020'
     step1 = pd.DataFrame(index=supply_loc.index, columns=[date_])
 
     for s_idx in tqdm(step1.index):
-        temp_s_count = supply_loc.at[s_idx, FOCUS_SUPPLY]
+        temp_s_count = supply_loc.at[s_idx, 'ICU_Beds']
         temp_s_avail = supply_var.loc[supply_loc.loc[s_idx, 'TSA'], date_]
         temp_supply = temp_s_count * temp_s_avail
 
@@ -171,14 +171,14 @@ def E2SFCA_Step2(step1_, demand_loc, mobility, date_):
     return step2
 
 
-def measure_accessibility(supply_loc, demand_loc, supply_var, demand_var, mobility, date_, FOCUS_SUPPLY):
+def measure_accessibility(supply_loc, demand_loc, supply_var, demand_var, mobility, date_):
     print(f'Accessibility Measure on {date_}')
 
-    step1_df = E2SFCA_Step1(supply_loc, supply_var, demand_var, mobility, date_, FOCUS_SUPPLY)
+    step1_df = E2SFCA_Step1(supply_loc, supply_var, demand_var, mobility, date_)
     step2_df = E2SFCA_Step2(step1_df, demand_loc, mobility, date_)
 
-    step1_df.to_csv(f'./data/processed_data/ICU_access_measures/keeling/acc_step1_{date_.replace("/", "_")}.csv')
-    step2_df.to_csv(f'./data/processed_data/ICU_access_measures/keeling/acc_step2_{date_.replace("/", "_")}.csv')
+    step1_df.to_csv(f'./data/access/ICU_access_measures/keeling/acc_step1_{date_.replace("/", "_")}.csv')
+    step2_df.to_csv(f'./data/access/ICU_access_measures/keeling/acc_step2_{date_.replace("/", "_")}.csv')
 
     return step1_df, step2_df
 

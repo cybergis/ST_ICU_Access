@@ -1,7 +1,10 @@
 /archive/
 /cache/
 /.ipynb_checkpoints/
+/data/original_data/OD_Matrix
 /data/original_data/OSM_Network/
+/data/access/ICU_access_measures/keeling
 .DS_Store
 .ipynb_checkpoints
 .idea
+/documents/
