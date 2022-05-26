@@ -11,7 +11,7 @@ During the coronavirus disease 2019 (COVID-19) pandemic, many patients could not
 ### Keywords:
 Spatial accessibility, COVID-19, Healthcare resources, Temporal dynamics, ICU beds
 
-## Repo sturcture
+## Repo structure
 ```bash
 ├── ST_Relationship_btw_ICU_Bed_Access_and_Mortality_of_COVID-19.ipynb (General procedure of study)
 ├── Data_Preprocessing.ipynb 
@@ -38,11 +38,12 @@ Spatial accessibility, COVID-19, Healthcare resources, Temporal dynamics, ICU be
 ├── README.md
 └── utils.py
 ```
-## Study area and period
+## Research summary (Visit [Here](ST_Relationship_btw_ICU_Bed_Access_and_Mortality_of_COVID-19.ipynb) for more information)
+### Study area and period
 Our study area is the state of Texas, which is the second-most populous state (29 million), and the study period is from July 1st, 2020, to December 31st, 2021 (18 months) to cover the starting point of the first major spread of COVID-19 in Texas (July 2020) to the present.
 ![](./images/study_area_period.jpg)
 
-## Research workflow
+### Research workflow
 Our study proceeds in three steps: 1) data preprocessing, 2) accessibility measurements, and 3) correlation analysis. 
 1. Data preprocessing step aimed to populate temporal changes in supply (availability of ICU beds per hospital) and demand (accumulated COVID-19 cases per census tract). We also precomputed a travel time matrix between the hospitals (supply) and census tracts (demand) to facilitate further analysis. <br>
 2. Accessibility measurements step utilized an E2SFCA method to assess spatial accessibility to healthcare resources during the COVID-19 pandemic under the interaction between the temporal changes of available ICU beds (supply) and the accumulated COVID-19 cases (demand).
@@ -50,12 +51,12 @@ Our study proceeds in three steps: 1) data preprocessing, 2) accessibility measu
 
 ![](./images/workflow.jpg)
 
-## Results
-### Daily measures of accessibility to ICU beds
+### Results
+#### Daily measures of accessibility to ICU beds
 During the study period, remarkable spatiotemporal changes in ICU bed accessibility were detected as the underlying variables (i.e., COVID-19 confirmed cases and the availability of ICU beds) dynamically fluctuated. Saturation in the maps indicates the level of accessibility of census tracts, and the boundaries of counties and TSA were provided to help the understanding of the locations.  
 ![](./images/accessibility_measures.jpg)
 
-### Correlation across time at county level
+#### Correlation across time at county level
 To investigate the spatiotemporal relationship between two variables, we increased the spatial or temporal granularity of correlation analysis as follows. First, we conducted a correlation analysis between ICU accessibility and mortality at the county level over the study period. This allowed us to explore which location provided a stronger negative correlation. Second, we analyzed the daily correlation between ICU bed accessibility and mortality for the entire study area to examine the temporal changes in correlation coefficients. We ran further correlation analyses for the period that provided a more substantial negative correlation. 
 #### Correlation across time at county Level
 ![](./images/correlation_tau.jpg)
