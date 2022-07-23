@@ -40,7 +40,7 @@ Spatial accessibility, COVID-19, Healthcare resources, Temporal dynamics, ICU be
 ├── README.md
 └── utils.py
 ```
-## Research summary (Visit [Here](ST_Relationship_btw_ICU_Bed_Access_and_Mortality_of_COVID-19.ipynb) for more information)
+## Research summary (Visit [Here](archives/ST_Relationship_btw_ICU_Bed_Access_and_Mortality_of_COVID-19.ipynb) for more information)
 ### Study area and period
 Our study area is the state of Texas, which is the second-most populous state (29 million), and the study period is from July 1st, 2020, to December 31st, 2021 (18 months) to cover the starting point of the first major spread of COVID-19 in Texas (July 2020) to the present.
 ![](./images/study_area_period.jpg)

@@ -3,6 +3,7 @@ import networkx as nx
 from tqdm import tqdm
 import pandas as pd
 import numpy as np
+import datetime
 
 # DISTANCE DECAY
 minutes = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 60]
@@ -185,3 +186,44 @@ def measure_accessibility(supply_loc, demand_loc, supply_var, demand_var, mobili
 
 def measure_accessibility_unpacker(args):
     return measure_accessibility(*args)
+
+
+def calculate_focus_date_dict(from_date, to_date, delta_days):
+    # from_date = '07/01/2020'
+    # to_date = '12/31/2021'
+
+    start_date = datetime.datetime.strptime(from_date, "%m/%d/%Y")
+    end_date = datetime.datetime.strptime(to_date, "%m/%d/%Y")
+
+    focus_date_list = []
+    delta = datetime.timedelta(days=delta_days)
+    while start_date <= end_date:
+        focus_date_list.append(start_date.strftime("%m/%d/%Y"))
+        start_date += delta
+
+    # Make a dictionary that has keys as target date and values as the date that should be averaged.
+    focus_date_dict = {}
+    time_delta = [3, 2, 1, 0, -1, -2, -3]
+
+    for idx, date in enumerate(focus_date_list):
+        temp_list = []
+        for delta in time_delta:
+            temp_list.append(
+                str(
+                    (datetime.datetime.strptime(focus_date_list[idx], "%m/%d/%Y") - datetime.timedelta(days=delta)
+                     ).strftime("%m/%d/%Y"))
+            )
+
+        focus_date_dict[date] = temp_list
+
+    # Manually enter the dates that would have missing values
+    focus_date_dict['07/01/2020'] = ['07/01/2020', '07/02/2020', '07/03/2020', '07/04/2020']
+    focus_date_dict['07/02/2020'] = ['07/01/2020', '07/02/2020', '07/03/2020', '07/04/2020', '07/05/2020']
+    focus_date_dict['07/03/2020'] = ['07/01/2020', '07/02/2020', '07/03/2020', '07/04/2020', '07/05/2020', '07/06/2020']
+    focus_date_dict['12/29/2021'] = ['12/26/2021', '12/27/2021', '12/28/2021', '12/29/2021', '12/30/2021', '12/31/2021']
+    focus_date_dict['12/30/2021'] = ['12/27/2021', '12/28/2021', '12/29/2021', '12/30/2021', '12/31/2021']
+    focus_date_dict['12/31/2021'] = ['12/28/2021', '12/29/2021', '12/30/2021', '12/31/2021']
+
+    return focus_date_dict
+
+
