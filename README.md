@@ -1,9 +1,9 @@
 # Spatiotemporal relationships between spatial accessibility to intensive care unit beds and mortality of COVID-19 in the state of Texas
 
-**Authors**: Jinwoo Park <sup>1,2</sup>, Alexander Michels<sup>1,2</sup>, Fangzheng Lyu<sup>1,2</sup>, Su Yeon Han<sup>1,2</sup>, and Shaowen Wang<sup>1,2,*</sup> <br>
+**Authors**: Jinwoo Park <sup>1,2</sup>, Alexander Michels<sup>1,2</sup>, Fangzheng Lyu<sup>1,2</sup>, Su Yeon Han<sup>1,2</sup>, and Shaowen Wang<sup>1,2,**</sup> <br>
 <sup>1</sup> Department of Geography and Geographic Information Science, University of Illinois Urbana-Champaign <br>
 <sup>2</sup> CyberGIS Center for Advanced Digital and Spatial Studies, University of Illinois Urbana-Champaign <br>
-<sup>*</sup> Correspondence: Shaowen Wang, shaowen@illinois.edu <br>
+<sup> *</sup> Correspondence: Shaowen Wang, shaowen@illinois.edu <br>
 
 Last Updated Date: May 26, 2022
 
