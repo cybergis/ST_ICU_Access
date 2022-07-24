@@ -1,15 +1,14 @@
-# Spatiotemporal relationships between spatial accessibility to intensive care unit beds and mortality of COVID-19 in the state of Texas
+# Daily changes in spatial accessibility to intensive care unit (ICU) beds and their relationship with the case-fatality ratio of COVID-19 in the state of Texas
 
-**Authors**: Jinwoo Park <sup>1,2</sup>, Alexander Michels<sup>1,2</sup>, Fangzheng Lyu<sup>1,2</sup>, Su Yeon Han<sup>1,2</sup>, and Shaowen Wang<sup>1,2,**</sup> <br>
+**Authors**: Jinwoo Park <sup>1,2</sup>, Alexander Michels<sup>1,2</sup>, Fangzheng Lyu<sup>1,2</sup>, Su Yeon Han<sup>1,2</sup>, and Shaowen Wang<sup>1,2,*</sup> <br>
 <sup>1</sup> Department of Geography and Geographic Information Science, University of Illinois Urbana-Champaign <br>
 <sup>2</sup> CyberGIS Center for Advanced Digital and Spatial Studies, University of Illinois Urbana-Champaign <br>
-<sup> *</sup> Correspondence: Shaowen Wang, shaowen@illinois.edu <br>
+<sup>\*</sup> Correspondence: Shaowen Wang, shaowen@illinois.edu <br>
 
-Last Updated Date: May 26, 2022
+Last Updated Date: July 24, 2022
 
 ### Abstract:
-During the coronavirus disease 2019 (COVID-19) pandemic, many patients could not receive timely healthcare services due to limited access to hospital infrastructure and human resources. Previous research showed that sufficient access to healthcare resources, such as intensive care unit (ICU) beds and ventilators, is important to save lives. However, little attention has been paid to the underlying temporal dynamics of healthcare resource availability and COVID-19 cases. To fill this gap, our study aims to investigate the spatiotemporal relationships between spatial accessibility to ICU beds and the mortality of COVID-19, under the changes in ICU bed availability and COVID-19 confirmed cases. We first integrate the historical temporal changes of availability and confirmed cases to assess daily spatial accessibility to ICU beds with an enhanced two-step floating catchment area (E2SFCA) method. We then observe how insufficient accessibility to ICU beds and increased mortality are correlated with Kendall’s tau. As results, strong negative correlation coefficients were observed in the county-level analysis between sufficient accessibility to ICU beds and mortality of COVID-19. In addition, we found that populous counties in North, Southeast, and Central Texas showed a more substantial relationship than those in West Texas, which have sparse population density. Our study identified vulnerable areas where low spatial accessibility levels were highly related to deaths based on their retrospective relationship. We also suggested that extra resources might be necessary for big cities to adequately deal with the acute surge of patients, which could support policymakers in saving lives for future pandemic scenarios. 
-
+During the COVID-19 pandemic, many patients could not receive timely healthcare services due to limited access to hospital infrastructure and human resources. Previous studies found that access to intensive care unit (ICU) beds saves lives, but they overlooked the temporal dynamics in the availability of healthcare resources and COVID-19 cases. To fill this gap, our study investigated daily changes in ICU bed accessibility with an enhanced two-step floating catchment area (E2SFCA) method. Along with the increased temporal granularity of measurements, we uncovered two phenomena: 1) aggravated spatial inequality of access during the pandemic and 2) the retrospective relationship between insufficient ICU bed accessibility and the high case-fatality ratio of COVID-19 in rural and suburban counties. Given our findings, we suggest that those locations should be supplemented with additional healthcare resources to save lives in future pandemic scenarios.
 ### Keywords:
 Spatial accessibility, COVID-19, Healthcare resources, Temporal dynamics, ICU beds
 
@@ -40,18 +39,19 @@ Spatial accessibility, COVID-19, Healthcare resources, Temporal dynamics, ICU be
 ├── README.md
 └── utils.py
 ```
-## Research summary (Visit [Here](archives/ST_Relationship_btw_ICU_Bed_Access_and_Mortality_of_COVID-19.ipynb) for more information)
+## Research summary (Visit [Here](Daily changes in spatial accessibility to ICU beds during the COVID-19 pandemic.ipynb) for more information)
 ### Study area and period
 Our study area is the state of Texas, which is the second-most populous state (29 million), and the study period is from July 1st, 2020, to December 31st, 2021 (18 months) to cover the starting point of the first major spread of COVID-19 in Texas (July 2020) to the present.
 ![](./images/study_area_period.jpg)
 
 ### Research workflow
-Our study proceeds in three steps: 1) data preprocessing, 2) accessibility measurements, and 3) correlation analysis. 
-1. Data preprocessing step aimed to populate temporal changes in supply (availability of ICU beds per hospital) and demand (accumulated COVID-19 cases per census tract). We also precomputed a travel time matrix between the hospitals (supply) and census tracts (demand) to facilitate further analysis. <br>
-2. Accessibility measurements step utilized an E2SFCA method to assess spatial accessibility to healthcare resources during the COVID-19 pandemic under the interaction between the temporal changes of available ICU beds (supply) and the accumulated COVID-19 cases (demand).
-3. Correlation analysis compared the daily accessibility and mortality rate of each county over time to see if their temporal changes are correlated. In detail, we employed Kendall’s tau correlation coefficients because the distributions of those two variables are not linear. The method considers the variables based on their ranks but keeps their pairs. 
-
-![](./images/workflow.jpg)
+Our study proceeds in four steps: 1) data preprocessing, 2) accessibility measurements, 3) correlation analysis, and 4) inequality assessment.
+1. **The data processing step** aimed to populate temporal changes in supply (availability of ICU beds per hospital) and demand (confirmed COVID-19 cases per census tract). We also precomputed a travel time matrix between the hospitals (supply locations) and census tracts (demand locations) to facilitate further analysis. <br>
+2. **Accessibility measurements step** utilized an E2SFCA method to assess spatial accessibility to healthcare resources during the COVID-19 pandemic under the interaction between the temporal changes of available ICU beds (supply) and the accumulated COVID-19 cases (demand). <br>
+3. **Correlation analysis step** compared the daily accessibility and case-fatality ratio of COVID-19 per each county over time to uncover the retrospective linkage between increased death and insufficient access. <br>
+4. **Inequality assessment step** calculated the daily changes in access inequality with the Gini index. <br>
+**Note:** In the third and fourth steps, we also examined different results obtained from static (without temporal changes) and dynamic (with temporal changes) accessibility measurements and explored the benefits of incorporating temporal aspects into spatial accessibility assessments.
+![](./images/workflow_new.jpg)
 
 ### Results
 #### Daily measures of accessibility to ICU beds
