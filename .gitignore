@@ -3,7 +3,6 @@
 /.ipynb_checkpoints/
 /data/original_data/OD_Matrix
 /data/original_data/OSM_Network/
-/archives/
 .DS_Store
 .ipynb_checkpoints
 .idea
