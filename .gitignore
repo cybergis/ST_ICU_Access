@@ -3,7 +3,8 @@
 /.ipynb_checkpoints/
 /data/original_data/OD_Matrix
 /data/original_data/OSM_Network/
-.DS_Store
-.ipynb_checkpoints
-.idea
+*.DS_Store
+*.ipynb_checkpoints
+*.idea
+*.out
 __pycache__/utils.cpython-38.pyc
