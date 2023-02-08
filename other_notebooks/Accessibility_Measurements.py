@@ -1,31 +1,46 @@
 import geopandas as gpd
 import pandas as pd
 import datetime
-import utils
 import multiprocessing as mp
 import itertools
+import sys
+import os
+
+# getting the name of the directory
+# where the this file is present.
+current = os.path.dirname(os.path.realpath(__file__))
+ 
+# Getting the parent directory name
+# where the current directory is present.
+parent = os.path.dirname(current)
+ 
+# adding the parent directory to
+# the sys.path.
+sys.path.append(parent)
+
+import utils
 
 
 # Import input files
 # Supply locations
-s_loc = gpd.read_file('./data/supply_related/hospital_geocode.json')
+s_loc = gpd.read_file(os.path.join(parent, 'data/access/input_files/hospital_geocode.json'))
 s_loc = s_loc.set_index('HC_ID')
 s_loc = s_loc.fillna(0)
 
 # Demand locations
-d_loc = gpd.read_file('./data/demand_related/census_tract_projected.json')
+d_loc = gpd.read_file(os.path.join(parent, 'data/reference_data/geographic_units/tract_reference.shp'))
 d_loc = d_loc.set_index('GEOID')
 
 # Mobility: OD Matrix between supply and demand locations
-mobility_df = pd.read_csv('../data/access/input_files/Precalculated_OD_Matrix.csv')
+mobility_df = pd.read_csv(os.path.join(parent, 'data/access/input_files/Precalculated_OD_Matrix.csv'))
 
 # Supply daily variation
-s_val = pd.read_csv('./data/supply_related/ICU_beds_available_ratio.csv')
+s_val = pd.read_csv(os.path.join(parent, 'data/access/input_files/ICU_beds_available_ratio.csv'))
 s_val = s_val.rename(columns={'Unnamed: 0': 'TSA'})
 s_val = s_val.set_index('TSA')
 
 # Demand daily variation
-d_val = pd.read_csv('./data/demand_related/estimated_covid_case.csv')
+d_val = pd.read_csv(os.path.join(parent, 'data/access/input_files/estimated_covid_case.csv'))
 d_val = d_val.set_index('GEOID')
 d_val = d_val.drop(columns=['FIPS', 'CTID', 'Pop_Ratio', 'County_Pop'])
 
